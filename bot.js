@@ -5,15 +5,9 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex1 = /^\finger$/,
-      botRegex2 = /^\FINGER$/,
-      botRegex3 = /^\finger!!$/,
-      botRegex4 = /^\FINGER!!$/,
-      botRegex5 = /^\finger!$/,
-      botRegex6 = /^\FINGER!$/;
+      botRegex1 = /^\finger$/;
 
-  if(request.text && (botRegex1.test(request.text) || botRegex2.test(request.text) || botRegex3.test(request.text)
-                      || botRegex4.test(request.text) || botRegex5.test(request.text) || botRegex6.test(request.text))
+  if(request.text && (botRegex1.test(request.text))
   {
     this.res.writeHead(200);
     postMessage();
