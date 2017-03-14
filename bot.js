@@ -21,7 +21,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  botResponse = "";
 
   options = {
     hostname: 'api.groupme.com',
@@ -31,7 +31,13 @@ function postMessage() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : botResponse,
+    "attachments" : [
+    {
+      "type"  : "image",
+      "url"   : "https://i.groupme.com/1183x887.png.f346103730714c77908256113e4e6a0b"
+    }
+  ]
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
