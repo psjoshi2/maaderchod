@@ -5,9 +5,16 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\Ryan Cyriac$/;
+      botRegex1 = /^\finger$/,
+      botRegex2 = /^\FINGER$/,
+      botRegex3 = /^\finger!!$/,
+      botRegex4 = /^\FINGER!!$/,
+      botRegex5 = /^\finger!$/,
+      botRegex6 = /^\FINGER!$/;
 
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && (botRegex1.test(request.text) || botRegex2.test(request.text) || botRegex3.test(request.text)
+                      || botRegex4.test(request.text) || botRegex5.test(request.text) || botRegex6.test(request.text))
+  {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
@@ -22,7 +29,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = "is a bitch";
+  botResponse = "INSIDE LARRY!!";
 
   options = {
     hostname: 'api.groupme.com',
@@ -33,12 +40,6 @@ function postMessage() {
   body = {
     "bot_id" : botID,
     "text" : botResponse,
-    "attachments" : [
-    {
-      "type"  : "image",
-      "url"   : "https://i.groupme.com/640x640.jpeg.9367b2421e2b427cb9e6902be28431da"
-    }
-  ]
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
